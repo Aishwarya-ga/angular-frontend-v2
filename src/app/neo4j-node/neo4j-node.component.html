@@ -1,0 +1,135 @@
+<html>
+
+<body>
+    <div class="container">
+        <!-- <div class="create-node"> -->
+            <!-- <div>
+        <br>
+        <button class="btn" (click)="onClickOpenForm()" value="Register">Add Node</button>
+    </div>
+    <br> -->
+
+            <!-- <div>
+        <br>
+        <button class="btn" [hidden]="!openform" (click)="onClickOpenConceptForm()" value="Concept">Create Concept Node
+        </button>
+    </div>
+
+    <div>
+        <br>
+        <button class="btn" [hidden]="!openform" (click)="onClickOpenIntentForm()" value="Concept">Create Intent Node</button>
+    </div>
+    <br> -->
+            <br>
+            <label for="select">
+                <h5>Node Type : &nbsp;</h5>
+            </label>
+            <select [(ngModel)]="selectedLevel" (change)="selected()" class="form-control" id="select">
+                <option>Concept Node</option>
+                <option>Intent Node</option>
+                <option>Get all terms</option>
+            </select>
+            <br>
+            <div *ngIf="data=='Concept Node'">
+                <br>
+                <form id="conceptForm" #form="ngForm" (ngSubmit)="createNode(form.value)">
+                    <div class="align-fields">
+                        <label>
+                            <h5>Concept Node Name:</h5>
+                            <p>{{msg}}</p>
+                        </label>
+                        <input type="text" name="name" class="padding" ngModel>
+                        <button class="btn padding" type="button" (click)="showProperties()">Add Properties</button>
+                    </div>
+                    <br>
+
+                    <div class="align-fields" [hidden]="!openProperty">
+                        <!-- <br> -->
+                        <select [(ngModel)]="newAttribute.property" name="newAttributeProperty" >
+                                <option>parent</option>
+                            </select>                        <input class="padding" type="text" id="newAttributeValue" [(ngModel)]="newAttribute.value" name="newAttributeValue" />
+                        <button class="btn padding" type="button" (click)="addFieldValue()"> Add </button>
+                    </div>
+
+                    <div *ngFor="let field of fieldArray; let i = index">
+                        <br>
+                        <input type="text" name="{{field.property}}" value="{{field.property}}">
+                        <input class="padding" [(ngModel)]="field.value" type="text" name="{{field.property}}" />
+                        <button class="btn padding" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                    </div>
+                    <br>
+                    <button class="btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <br>
+            <div *ngIf="data=='Intent Node'">
+                <form id="intentForm" #form1="ngForm" (ngSubmit)="createIntent(form1.value)">
+                    <div class="align-fields">
+                        <label>
+
+                            <h5>Intent Node Name:</h5>
+                            <p>{{msg1}}</p>
+                        </label>
+                        <input type="text" name="name" ngModel class="padding">
+                        <button class="btn padding" type="button" (click)="showProperties()">Add Properties</button>
+                    </div>
+                    <br>
+
+                    <!-- <div class="align-fields" [hidden]="!openProperty">
+                        <br>
+                         <select [(ngModel)]="newAttributeProperty.value" class="form-control" id="newAttributeProperty">
+                                <option>parent_node_type</option>
+                                <option>weight</option>
+                            </select> 
+                         <input type="text" id="newAttributeProperty" [(ngModel)]="newAttribute.property" name="newAttributeProperty" /> 
+                        <input class="padding" type="text" id="newAttributeValue" [(ngModel)]="newAttributeProperty.value" name="newAttributeValue" />
+                        <button class="btn padding" type="button" (click)="addFieldValue()"> Add </button>
+                    </div> -->
+
+                    <div class="align-fields" [hidden]="!openProperty">
+                            <!-- <br> -->
+                            <select [(ngModel)]="newAttribute.property" name="newAttributeProperty" >
+                                    <option>parent_node_type</option>
+                                    <option>weight</option>
+                                </select>
+                            <!-- <input type="text" id="newAttributeProperty" [(ngModel)]="newAttribute.property" name="newAttributeProperty" /> -->
+                            <input class="padding" type="text" id="newAttributeValue" [(ngModel)]="newAttribute.value" name="newAttributeValue" />
+                            <button class="btn padding" type="button" (click)="addFieldValue()"> Add </button>
+                        </div>
+
+                    <div *ngFor="let field of fieldArray; let i = index">
+                        <br>
+                        <input type="text" name="{{field.property}}" value="{{field.property}}">
+                        <input class="padding" [(ngModel)]="field.value" type="text" name="{{field.property}}" />
+                        <button class="btn padding" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                    </div>
+
+                    <br>
+                    <button class="btn" type="submit">Submit</button>
+                </form>
+        <!-- </div> -->
+    </div>
+
+    <div *ngIf="data=='Get all terms'">
+        <!-- <div [hidden]="!getTerms"> -->
+        <button mat-raised-button (click)="onClickShowKnowledge()">Knowledge terms</button>&nbsp;
+        <button mat-raised-button (click)="onClickShowSynthesis()">Synthesis terms</button>&nbsp;
+        <button mat-raised-button (click)="onClickShowComprehension()">Comphrension terms</button>&nbsp;
+        <button mat-raised-button (click)="onClickShowEvaluation()">Evaluation terms</button>&nbsp;
+        <button mat-raised-button (click)="onClickShowAnaylsis()">Analysis terms</button>&nbsp;
+        <button mat-raised-button (click)="onClickShowApplication()">Application terms</button>
+    </div>
+
+    <mat-list>
+        <tr *ngFor="let terms of intents | async">
+           
+            <td><div class="text-color">{{terms}}</div></td>&nbsp;&nbsp;
+            <td> <button mat-flat-button (click)="openDialog(terms,bloomstack)">Add Synonym</button></td>
+       
+        </tr>
+    </mat-list>
+</div>
+
+</body>
+
+</html>

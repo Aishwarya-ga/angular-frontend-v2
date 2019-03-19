@@ -1,0 +1,23 @@
+.card{
+    background-color: navajowhite;
+    margin: 10px;
+}
+.card-header{
+    background-color: lightsalmon;
+}
+footer{
+    position: relative;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 100px;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      box-sizing: border-box;
+  }
+  @media screen and (min-width: 665px) {
+    footer{
+      position: fixed;
+    }
+  }

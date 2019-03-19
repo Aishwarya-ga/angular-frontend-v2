@@ -1,0 +1,38 @@
+button
+{
+    background-color: #d4d7db;
+    color: black;
+}
+
+body{
+    height:auto;
+    min-height:100vh;
+    width: 100%;
+    background-image:url(/assets/image.jpg);
+    font-family: sansation;
+}
+.align-fields{
+     display: inline-block;    
+}
+.align-field{
+    display: inline;    
+}
+
+.padding{
+  margin-left: 14px;
+}
+
+label{
+    color:black;
+}
+
+.text-color
+{
+    color:black;
+}
+
+.align-buttons{
+    margin-left: 20px;
+}
+
+
