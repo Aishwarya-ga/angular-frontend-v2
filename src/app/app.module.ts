@@ -76,6 +76,7 @@ import { QuestionClassifyComponent } from './question-classify/question-classify
 import { DomainConceptComponent } from './domain-concept/domain-concept.component';
 import {NodeComponent } from './neo4j-node/neo4j-node.component';
 import { TermComponent } from './neo4j-term/neo4j-term.component';
+import { ChatComponent } from './chat/chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,7 +98,8 @@ import { TermComponent } from './neo4j-term/neo4j-term.component';
     DomainConceptComponent,
     UploadComponent,
     NodeComponent,
-    TermComponent
+    TermComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +154,7 @@ import { TermComponent } from './neo4j-term/neo4j-term.component';
   ],
   providers: [SocketService,SessionId,DataService,TokenService,AuthService,AuthInterceptor],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ChatComponent]
 })
 export class AppModule { }

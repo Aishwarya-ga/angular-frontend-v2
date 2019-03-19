@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { ChatComponent } from '../chat/chat.component';
 @Component({
   selector: 'app-zombotron',
   templateUrl: './zombotron.component.html',
@@ -8,12 +9,17 @@ import { Router } from '@angular/router';
 })
 export class ZombotronComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  chatComponent: MatDialogRef<ChatComponent>;
+
+  constructor(private router : Router,private dialog:MatDialog) { }
 
   ngOnInit() {
   }
   search(){
     this.router.navigate(['/search'])
   }
-
+  openDialog() {
+    // this.chatComponent=this.dialog.open(ChatComponent)
+    this.chatComponent = this.dialog.open(ChatComponent,{ disableClose : true})
+  }
 }

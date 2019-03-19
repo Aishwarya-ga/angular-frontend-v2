@@ -64,3 +64,14 @@
   background-image: url("/assets/img/background-image.jpg") ;
   background-size: cover;
 }
+#add-button{
+  top: auto;
+  right: 100px;
+  bottom: 200px;
+  background-color: rgb(40, 187, 40);
+  height: 75px;
+  width: 75px;
+  left: auto;
+  position: fixed;
+  font-size: 18px;
+}

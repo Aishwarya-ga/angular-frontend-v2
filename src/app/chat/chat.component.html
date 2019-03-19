@@ -1,0 +1,33 @@
+<body>
+
+    <h1 mat-dialog-title>Knowledge Bot</h1>
+    
+    
+    <div mat-dialog-content>
+    
+    
+    <ng-container  *ngFor="let message of messages | async">
+    
+      <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                        'to':   message.sentBy === 'user' }">
+        {{ message.content }}
+      </div>
+    
+    </ng-container>
+    
+    </div>
+    
+    
+    <label for="nameField">Your Message</label>
+    
+    <div mat-dialog-actions>
+      <mat-form-field>
+        <input matInput [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
+      </mat-form-field>
+    
+    <button mat-stroked-button  (click)="sendMessage()">Send</button>
+    <button mat-stroked-button type="button" mat-dialog-close>Close Bot</button>
+    
+    </div>
+    
+    </body>
