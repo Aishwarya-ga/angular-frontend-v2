@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <head>
   <style>
@@ -61,15 +64,9 @@
       padding-left: 20px;
     }
 
-    /* Fake image */
-    .fakeimg {
-      background-color: #aaa;
-      width: 100%;
-      padding: 20px;
-    }
-
     /* Add a card effect for articles */
     .card {
+    
       background-color: white;
       padding: 20px;
       margin-top: 20px;
@@ -109,36 +106,20 @@
   </style>
 </head>
 
-<body>
-  <!-- 
-<div class="header">
-  <h1>My Website</h1>
-  <p>Resize the browser window to see the effect.</p>
-</div>
-
-<div class="topnav">
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#" style="float:right">Link</a>
-</div> -->
-
+<!-- <body>
   <div class="row">
     <div class="col-sm-8">
-      <div class="col-sm-2">
-      <div *ngFor="let data of object1">
-        <div class="card">
-          <h2>{{data.domain}}</h2>
-          <h5>Title description, Dec 7, 2017</h5>
-          <p>{{data.name}}</p>
+        <div *ngFor="let data of object1">
+          <div class="card">
+            <h2>{{data.domain}}</h2>
+            <p>{{data.name}}</p>
+          </div>
         </div>
-      </div>
-    </div>
-      <div *ngFor="let web of object2">
+
+        <div *ngFor="let web of object2">
           <div class="card">
             <h4>Web</h4>
             <h2>{{web.domain}}</h2>
-            <h5>Title description, Dec 7, 2017</h5>
             <p>{{web.description}}</p>
           </div>
         </div>
@@ -160,6 +141,67 @@
   </div>
 
 
+</body> -->
+
+<body>
+  <div class="row">
+    <div class="col-sm-8">
+      <div *ngFor="let data of object1">
+        <div class="card">
+          <h2>{{data.domain}}</h2>
+          <p>{{data.name}}</p>
+          <button type="button" style="width:100px" class="btn btn-info" data-toggle="collapse" (click)="assignVar(data)">Read
+            more</button>
+          <ul *ngIf="data==var1">
+            {{data.domain}}
+          </ul>
+        </div>
+      </div>
+
+      <div *ngFor="let web of object2">
+        <div class="card">
+          <h4>Web</h4>
+          <h2>web.domain</h2>
+          <p>web.description</p>
+          <button type="button" style="width:100px" class="btn btn-info" data-toggle="collapse" data-target="#demo">Read
+            more</button>
+          <div id="demo" class="collapse">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div *ngFor="let rec of object3">
+
+        <div class="card">
+          <h2>Recommendation</h2>
+          <p>rec</p>
+        </div>
+      </div>
+      <div *ngFor="let nlp of object4">
+
+        <div class="card">
+          <h3>Top search question</h3>
+          <p>{{nlp.concept}}</p>
+          <p>{{nlp.frequency}}</p>
+        </div>
+      </div>
+      <div *ngFor="let searchfreq of object5">
+
+        <div class="card">
+          <h3>Top search question</h3>
+          <p>{{searchfreq.searchString}}</p>
+          <p>{{searchfreq.frequency}}
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
+
+
 
 </html>

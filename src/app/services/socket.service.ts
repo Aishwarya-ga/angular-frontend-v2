@@ -31,22 +31,41 @@ export class SocketService {
         var res = JSON.parse(message.body);
         var result = res.result;
         var webres = res.webResult;
+        var nlp = res.nlpResultFrequencies;
+        var rec = res.recommendations;
+        var searchfreq = res.searchFrequencies;
         result.forEach(element => {
           _this.result(element);
         });
         webres.forEach(element => {
           _this.webresult(element);
         });
+        nlp.forEach(element => {
+          _this.nlp(element);
+        });
+        rec.forEach(element => {
+          _this.rec(element);
+        });
+        searchfreq.forEach(element => {
+          _this.searchfreq(element);
+        });
       });
     });
   }
   result(name){
     this.SessionIdNew.pdfresult.push(name);
-    // console.log("result array : "+this.SessionIdNew.greetings)
   }
   webresult(web){
     this.SessionIdNew.webresult.push(web);
-    // console.log("webresult array :"+this.SessionIdNew.webres);
+  }
+  nlp(nlp){
+    this.SessionIdNew.nlpresult.push(nlp);
+  }
+  rec(rec){
+    this.SessionIdNew.recommendation.push(rec);
+  }
+  searchfreq(search){
+    this.SessionIdNew.searchfreq.push(search)
   }
 
 IDGenerator() {
