@@ -3,7 +3,7 @@
   <form class="search-form"  >
     <input type="text" placeholder="Search here....." name="searchTerm" [(ngModel)]="searchTerm">
     <img class="mic"  src="https://upload.wikimedia.org/wikipedia/commons/2/22/Google_microphone_logo.png">
-    <input  class="btn"  type="submit" value="Submit" (click)="search(searchTerm)">
+    <input  href="#/result" class="btn"  type="submit" value="Submit" (click)="search(searchTerm)">
   </form>
 </div>
 <app-resultcard></app-resultcard>

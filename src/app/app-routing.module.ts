@@ -12,6 +12,7 @@ import { DomainConceptNameService } from './services/domain-concept-name.service
 import { DomainConceptComponent } from './domain-concept/domain-concept.component';
 import { UploadComponent } from './upload/upload.component';
 import { NodeComponent } from './neo4j-node/neo4j-node.component';
+import { ResultcardComponent } from './resultcard/resultcard.component';
 const routes: Routes = [
   {
     path:"home",
@@ -32,7 +33,7 @@ const routes: Routes = [
   component: ResultsComponent
 },
 {
-  path:'search',
+  path:'search1',
 
   component: SearchBarComponent
 },
@@ -62,6 +63,10 @@ const routes: Routes = [
 },{
   path:'modifyNeo4j',
   component:NodeComponent
+},
+{
+  path:'resultcard',
+  component: ResultcardComponent
 }
 ];
 

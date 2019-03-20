@@ -161,38 +161,36 @@
       <div *ngFor="let web of object2">
         <div class="card">
           <h4>Web</h4>
-          <h2>web.domain</h2>
-          <p>web.description</p>
+          <h2>{{web.domain}}</h2>
+          <p>{{web.description}}</p>
           <button type="button" style="width:100px" class="btn btn-info" data-toggle="collapse" data-target="#demo">Read
             more</button>
           <div id="demo" class="collapse">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {{web.domain}}
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-4">
-      <div *ngFor="let rec of object3">
-
-        <div class="card">
-          <h2>Recommendation</h2>
-          <p>rec</p>
+      <div class="card">
+        <h3>Recommendation</h3>
+        <div *ngFor="let rec of object3">
+          <p>{{rec}}</p>
         </div>
       </div>
-      <div *ngFor="let nlp of object4">
 
-        <div class="card">
-          <h3>Top search question</h3>
+
+      <div class="card">
+        <h3>Top Search Concepts</h3>
+        <div *ngFor="let nlp of object4">
           <p>{{nlp.concept}}</p>
           <p>{{nlp.frequency}}</p>
         </div>
       </div>
-      <div *ngFor="let searchfreq of object5">
 
-        <div class="card">
-          <h3>Top search question</h3>
+      <div class="card">
+        <h3>Top Search Questions</h3>
+        <div *ngFor="let searchfreq of object5">
           <p>{{searchfreq.searchString}}</p>
           <p>{{searchfreq.frequency}}
         </div>

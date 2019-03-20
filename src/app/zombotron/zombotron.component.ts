@@ -16,7 +16,7 @@ export class ZombotronComponent implements OnInit {
   ngOnInit() {
   }
   search(){
-    this.router.navigate(['/search'])
+    this.router.navigate(['/search1'])
   }
   openDialog() {
     // this.chatComponent=this.dialog.open(ChatComponent)
