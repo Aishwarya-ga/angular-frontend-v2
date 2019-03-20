@@ -1,8 +1,7 @@
 
 .search
 {
-	border: 2px solid #44EDCB;
-  /* overflow: auto; */
+	border: 2px solid #808888;
   width:70%;
   margin-left: 200px;
 	border-radius: 5px;
@@ -30,7 +29,7 @@
 	background-color: #44EDCB;
 	color: #fff;
 	float: right;
-	padding: 10px;
+	/* padding: 10px; */
 	border-top-right-radius: 5px;
 	-moz-border-radius-top-right: 5px;
 	-webkit-border-radius-top-right: 5px;
@@ -56,9 +55,6 @@
    margin-right:2px;
  }
 
-/* ===========================
-   ====== Medua Query for Search Box ====== 
-   =========================== */
 
 @media only screen and (min-width : 150px) and (max-width : 780px)
 {
