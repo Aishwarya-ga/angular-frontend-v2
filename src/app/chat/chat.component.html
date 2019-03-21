@@ -19,15 +19,18 @@
     
     
     <label for="nameField">Your Message</label>
-    
+    <!-- <form  #gSearch  id="gSearch" onsubmit="return result()">   -->
     <div mat-dialog-actions>
       <mat-form-field>
-        <input matInput [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
+        <input matInput name="formValue" [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" #searchKey  id="searchKey"><br>
+        <!-- <img class="mic" (click)="voicesearch()" src="https://upload.wikimedia.org/wikipedia/commons/2/22/Google_microphone_logo.png"> -->
       </mat-form-field>
     
     <button mat-stroked-button  (click)="sendMessage()">Send</button>
     <button mat-stroked-button type="button" mat-dialog-close>Close Bot</button>
     
     </div>
+
+    <!-- </form> -->
     
     </body>

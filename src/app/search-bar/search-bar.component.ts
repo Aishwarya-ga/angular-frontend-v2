@@ -38,58 +38,48 @@ export class SearchBarComponent implements OnInit {
  }
  voicesearch(){
 
-   if('webkitSpeechRecognition' in window){
-     const vSearch = new webkitSpeechRecognition();
-     vSearch.continuous = false;
-     vSearch.interimresults = false;
-     vSearch.lang = 'en-US';
-     vSearch.start();
-     const voiceSearchForm = this.formSearch.nativeElement;
-     const voiceHandler = this.hiddenSearchHandler.nativeElement;
+  if('webkitSpeechRecognition' in window){
+    const vSearch = new webkitSpeechRecognition();
+    vSearch.continuous = false;
+    vSearch.interimresults = false;
+    vSearch.lang = 'en-US';
+    vSearch.start();
+    const voiceSearchForm = this.formSearch.nativeElement;
+    const voiceHandler = this.hiddenSearchHandler.nativeElement;
+    vSearch.onresult = function(event){
+      //storing the result in value
+      //returns a string containing the transcript of the recognised word(s).
+      voiceHandler.value = event.results[0][0].transcript;
+      window['searchTerm'] = voiceHandler.value;
+      console.log("SEARCHED: "+window['searchTerm']);
+        vSearch.stop();
+
+      }
 
 
-     vSearch.onresult = function(event){
-       //storing the result in value
-       //returns a string containing the transcript of the recognised word(s).
-       voiceHandler.value = event.results[0][0].transcript;
-
-       console.log("value"+voiceHandler.value);
-         vSearch.stop();
-         var output = {
-           sessionId : window['sessionId'],
-           searchString : voiceHandler.value
-         };
-
-         console.log(window['sessionId'])
-         this.searchservice.postResults(output).subscribe(this.router.navigate(['/result']));
-         this.dataservice.dataService = this.searchTerm;
+    //if error is encountered, show error in console and stop the speech recognition
+    vSearch.onerror = function(event){
+        console.log(event);
+        vSearch.stop();
+    }
 
 
-       }
-
-
-     //if error is encountered, show error in console and stop the speech recognition
-     vSearch.onerror = function(event){
-         console.log(event);
-         vSearch.stop();
-     }
-
-
- }
- //if browser does not have webkitspeechrecognition
- else {
-   console.log("Your browser does not support voice recognition feature.");
-   }
- }
- result(){
-   console.log("result function : "+ this.searchTerm);
-   var output = {
-     sessionId : this.SessionIdNew.SessionId,
-     searchString : this.searchTerm
-   };
-   this.searchservice.postResults(output).subscribe();
-   this.dataservice.dataService = this.searchTerm;
-   this.router.navigate(['/result'])
- }
+}
+//if browser does not have webkitspeechrecognition
+else {
+  console.log("Your browser does not support voice recognition feature.");
+  }
+}
+result(){
+  console.log("INSIDE RESULT FUNCTION");
+  console.log("result function : "+ window['searchTerm']);
+  var output = {
+    sessionId : this.SessionIdNew.SessionId,
+    searchString : window['searchTerm']
+  };
+  this.searchservice.postResults(output).subscribe();
+  this.dataservice.dataService = window['searchTerm'];
+  this.router.navigate(['/result'])
+}
 
 }
